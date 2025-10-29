@@ -25,7 +25,7 @@ if page == "Home":
     # Paragraph with color
     st.markdown("<p style='color:#FF1493;'>Get the best recommendations tailored to your taste.</p>", unsafe_allow_html=True)
 
-    st.image(r"C:\Users\KRHA1002\OneDrive - Nielsen IQ\Profile\GUVI\Project 4\images.png")  # Adjust dimensions as needed
+    st.image("images.png")  # Adjust dimensions as needed
 
 #Restaurant Recommendations page
 elif page == "Restaurant Recommendations":
@@ -212,5 +212,6 @@ elif page == "Restaurant Recommendations":
             # 🔗 Website link
             if pd.notna(row.get("link", None)):
                 st.markdown(f"🔗 <a href='{row['link']}' style='color:#20B2AA' target='_blank'><b>Order Online</b></a>", unsafe_allow_html=True)
+
 
             st.markdown("---")  # Divider between restaurants
