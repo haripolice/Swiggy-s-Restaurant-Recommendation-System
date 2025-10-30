@@ -24,5 +24,5 @@ streamlit run swiggy.py
 - encoded_data.csv
 - encoder.pkl
 - swiggy.py
-- project.ipynb
+- swiggy.ipynb
 - Project_Report.md
