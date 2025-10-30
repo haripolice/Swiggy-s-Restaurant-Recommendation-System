@@ -2,10 +2,7 @@ import os
 import zipfile
 import streamlit as st
 import pandas as pd
-import numpy as np
 import pickle
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics.pairwise import cosine_similarity
 
 # --- Step 1: Unzip data if needed ---
 ZIP_FILE = "encoded_data.zip"
@@ -22,18 +19,23 @@ if not os.path.exists(EXTRACT_DIR):
 
 # --- Step 2: Define file paths from extracted folder ---
 cleaned_data_path = os.path.join(EXTRACT_DIR, "cleaned_data.csv")
-pca_data_path = os.path.join(EXTRACT_DIR, "encoded_data.csv")  # renamed if needed
-cuisine_encoder_path = ("cuisine_encoder.pkl")
-city_encoder_path =("city_encoder.pkl")
-pca_model_path = ("pca_model.pkl")
-scaler_path = ("scaler.pkl")
-kmeans_model_path =("kmeans_model.pkl")
-pca_input_columns_path =("pca_input_columns.pkl")
+pca_data_path = os.path.join(EXTRACT_DIR, "encoded_data.csv")
+
+# Pickle files are in project root (not inside ZIP)
+cuisine_encoder_path = "cuisine_encoder.pkl"
+city_encoder_path = "city_encoder.pkl"
+pca_model_path = "pca_model.pkl"
+scaler_path = "scaler.pkl"
+kmeans_model_path = "kmeans_model.pkl"
+pca_input_columns_path = "pca_input_columns.pkl"
 
 # --- Step 3: Load Data and Models safely ---
 try:
+    # Load CSVs
     cleaned_data = pd.read_csv(cleaned_data_path)
     pca_data = pd.read_csv(pca_data_path)
+
+    # Load model and encoder files
     with open(cuisine_encoder_path, "rb") as f:
         cuisine_encoder = pickle.load(f)
     with open(city_encoder_path, "rb") as f:
@@ -46,10 +48,12 @@ try:
         kmeans_model = pickle.load(f)
     with open(pca_input_columns_path, "rb") as f:
         pca_input_columns = pickle.load(f)
+
+    print("✅ Data and model files loaded successfully!")
+
 except Exception as e:
     st.error(f"❌ Error loading data/models: {e}")
     st.stop()
-
 # --- Sidebar Navigation ---
 st.sidebar.title("App Navigation")
 page = st.sidebar.radio("Select Page", ("Home", "Restaurant Recommendations"))
@@ -146,6 +150,7 @@ elif page == "Restaurant Recommendations":
                     st.markdown(f"🔗 <a href='{row['link']}' style='color:#20B2AA' target='_blank'><b>Order Online</b></a>", unsafe_allow_html=True)
 
                 st.markdown("---")
+
 
 
 
