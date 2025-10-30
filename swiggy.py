@@ -24,11 +24,11 @@ if not os.path.exists(EXTRACT_DIR):
 cleaned_data_path = os.path.join(EXTRACT_DIR, "cleaned_data.csv")
 pca_data_path = os.path.join(EXTRACT_DIR, "encoded_data.csv")  # renamed if needed
 cuisine_encoder_path = os.path.join(EXTRACT_DIR, "cuisine_encoder.pkl")
-city_encoder_path = os.path.join(EXTRACT_DIR, "city_encoder.pkl")
-pca_model_path = os.path.join(EXTRACT_DIR, "pca_model.pkl")
-scaler_path = os.path.join(EXTRACT_DIR, "scaler.pkl")
-kmeans_model_path = os.path.join(EXTRACT_DIR, "kmeans_model.pkl")
-pca_input_columns_path = os.path.join(EXTRACT_DIR, "pca_input_columns.pkl")
+city_encoder_path =("city_encoder.pkl")
+pca_model_path = ("pca_model.pkl")
+scaler_path = ("scaler.pkl")
+kmeans_model_path =("kmeans_model.pkl")
+pca_input_columns_path =("pca_input_columns.pkl")
 
 # --- Step 3: Load Data and Models safely ---
 try:
@@ -146,4 +146,5 @@ elif page == "Restaurant Recommendations":
                     st.markdown(f"🔗 <a href='{row['link']}' style='color:#20B2AA' target='_blank'><b>Order Online</b></a>", unsafe_allow_html=True)
 
                 st.markdown("---")
+
 
