@@ -22,7 +22,7 @@ if not os.path.exists(EXTRACT_DIR):
 
 # --- Step 2: Define file paths from extracted folder ---
 cleaned_data_path = os.path.join(EXTRACT_DIR, "cleaned_data.csv")
-pca_data_path = os.path.join(EXTRACT_DIR, "pca_encoded_data.csv")  # renamed if needed
+pca_data_path = os.path.join(EXTRACT_DIR, "encoded_data.csv")  # renamed if needed
 cuisine_encoder_path = os.path.join(EXTRACT_DIR, "cuisine_encoder.pkl")
 city_encoder_path = os.path.join(EXTRACT_DIR, "city_encoder.pkl")
 pca_model_path = os.path.join(EXTRACT_DIR, "pca_model.pkl")
@@ -146,3 +146,4 @@ elif page == "Restaurant Recommendations":
                     st.markdown(f"🔗 <a href='{row['link']}' style='color:#20B2AA' target='_blank'><b>Order Online</b></a>", unsafe_allow_html=True)
 
                 st.markdown("---")
+
